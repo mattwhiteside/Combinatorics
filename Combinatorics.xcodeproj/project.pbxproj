@@ -7,17 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C93E0EF919E0874700569619 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E0EF819E0874700569619 /* Set.swift */; };
 		C9CA26FC1993EE9000CDB7E6 /* Combinatorics.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CA26FB1993EE9000CDB7E6 /* Combinatorics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9CA27061993EE9000CDB7E6 /* CombinatoricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA27051993EE9000CDB7E6 /* CombinatoricsTests.swift */; };
+		C9CA27191993EEA400CDB7E6 /* Combinatorics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA27181993EEA400CDB7E6 /* Combinatorics.swift */; };
+		C9CE096C19E8721A0089A1B7 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE096B19E8721A0089A1B7 /* OrderedSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C93E0EF819E0874700569619 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		C9CA26F61993EE9000CDB7E6 /* Combinatorics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Combinatorics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9CA26FA1993EE9000CDB7E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9CA26FB1993EE9000CDB7E6 /* Combinatorics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Combinatorics.h; sourceTree = "<group>"; };
 		C9CA27011993EE9000CDB7E6 /* CombinatoricsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CombinatoricsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9CA27041993EE9000CDB7E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9CA27051993EE9000CDB7E6 /* CombinatoricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinatoricsTests.swift; sourceTree = "<group>"; };
+		C9CA27181993EEA400CDB7E6 /* Combinatorics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Combinatorics.swift; sourceTree = "<group>"; };
+		C9CE096B19E8721A0089A1B7 /* OrderedSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +65,11 @@
 		C9CA26F81993EE9000CDB7E6 /* Combinatorics */ = {
 			isa = PBXGroup;
 			children = (
+				C9CA27181993EEA400CDB7E6 /* Combinatorics.swift */,
 				C9CA26FB1993EE9000CDB7E6 /* Combinatorics.h */,
 				C9CA26F91993EE9000CDB7E6 /* Supporting Files */,
+				C93E0EF819E0874700569619 /* Set.swift */,
+				C9CE096B19E8721A0089A1B7 /* OrderedSet.swift */,
 			);
 			path = Combinatorics;
 			sourceTree = "<group>";
@@ -196,6 +205,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9CE096C19E8721A0089A1B7 /* OrderedSet.swift in Sources */,
+				C93E0EF919E0874700569619 /* Set.swift in Sources */,
+				C9CA27191993EEA400CDB7E6 /* Combinatorics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +388,7 @@
 				C9CA270B1993EE9000CDB7E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9CA270C1993EE9000CDB7E6 /* Build configuration list for PBXNativeTarget "CombinatoricsTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +397,7 @@
 				C9CA270E1993EE9000CDB7E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,15 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C93E0EF919E0874700569619 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E0EF819E0874700569619 /* Set.swift */; };
 		C9CA26FC1993EE9000CDB7E6 /* Combinatorics.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CA26FB1993EE9000CDB7E6 /* Combinatorics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9CA27061993EE9000CDB7E6 /* CombinatoricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA27051993EE9000CDB7E6 /* CombinatoricsTests.swift */; };
 		C9CA27191993EEA400CDB7E6 /* Combinatorics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA27181993EEA400CDB7E6 /* Combinatorics.swift */; };
 		C9CE096C19E8721A0089A1B7 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE096B19E8721A0089A1B7 /* OrderedSet.swift */; };
+		C9F5725E1A7C904B00C4B435 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5725D1A7C904B00C4B435 /* OrderedDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C93E0EF819E0874700569619 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		C9CA26F61993EE9000CDB7E6 /* Combinatorics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Combinatorics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9CA26FA1993EE9000CDB7E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9CA26FB1993EE9000CDB7E6 /* Combinatorics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Combinatorics.h; sourceTree = "<group>"; };
@@ -24,6 +23,7 @@
 		C9CA27051993EE9000CDB7E6 /* CombinatoricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinatoricsTests.swift; sourceTree = "<group>"; };
 		C9CA27181993EEA400CDB7E6 /* Combinatorics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Combinatorics.swift; sourceTree = "<group>"; };
 		C9CE096B19E8721A0089A1B7 /* OrderedSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedSet.swift; sourceTree = "<group>"; };
+		C9F5725D1A7C904B00C4B435 /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +68,8 @@
 				C9CA27181993EEA400CDB7E6 /* Combinatorics.swift */,
 				C9CA26FB1993EE9000CDB7E6 /* Combinatorics.h */,
 				C9CA26F91993EE9000CDB7E6 /* Supporting Files */,
-				C93E0EF819E0874700569619 /* Set.swift */,
 				C9CE096B19E8721A0089A1B7 /* OrderedSet.swift */,
+				C9F5725D1A7C904B00C4B435 /* OrderedDictionary.swift */,
 			);
 			path = Combinatorics;
 			sourceTree = "<group>";
@@ -154,7 +154,9 @@
 		C9CA26ED1993EE9000CDB7E6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = mattwhiteside;
 				TargetAttributes = {
 					C9CA26F51993EE9000CDB7E6 = {
@@ -206,7 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9CE096C19E8721A0089A1B7 /* OrderedSet.swift in Sources */,
-				C93E0EF919E0874700569619 /* Set.swift in Sources */,
+				C9F5725E1A7C904B00C4B435 /* OrderedDictionary.swift in Sources */,
 				C9CA27191993EEA400CDB7E6 /* Combinatorics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +244,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -315,6 +318,7 @@
 				INFOPLIST_FILE = Combinatorics/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mattwhiteside.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -332,6 +336,7 @@
 				INFOPLIST_FILE = Combinatorics/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mattwhiteside.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -351,6 +356,7 @@
 				);
 				INFOPLIST_FILE = CombinatoricsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mattwhiteside.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -365,6 +371,7 @@
 				);
 				INFOPLIST_FILE = CombinatoricsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mattwhiteside.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

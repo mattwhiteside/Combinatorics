@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+
 //! Project version number for Combinatorics.
 FOUNDATION_EXPORT double CombinatoricsVersionNumber;
 

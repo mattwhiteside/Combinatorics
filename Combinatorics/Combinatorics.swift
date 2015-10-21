@@ -394,10 +394,25 @@ public func +(x:Bool, y:Bool) -> Bool{
 	return x || y
 }
 
+infix operator ⊕ { associativity left precedence 140 }
+public func ⊕ (left: Bool, @autoclosure right:  () -> Bool) -> Bool {
+	return left != right()
+}
+
 extension Int{
 	
 	static let Unity = 1
 
+}
+
+extension UInt8{
+	public func bitCount() -> UInt8{
+//		let uCount = self - ((self >> 1) & 033333333333) - ((self >> 2) & 011111111111);
+//		return ((uCount + (uCount >> 3)) & 030707070707) % 63;
+		var i = self - ((self >> 1) & 0x55)
+		i = (i & 0x33) + ((i >> 2) & 0x33)
+		return (((i + (i >> 4)) & 0x0F) * 0x01)
+	}
 }
 
 

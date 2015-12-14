@@ -69,7 +69,7 @@ public func ⇒(x:Bool, y:Bool) -> Bool{
 
 infix operator **{associativity left precedence 160 }
 
-protocol ℚ {
+public protocol Rational {
 	init() // zero
 	func * (_: Self,_: Self) -> Self
 	func + (_: Self,_: Self) -> Self
@@ -90,11 +90,9 @@ public func **(lhs:Double, rhs:Double) -> Double{
 }
 
 
-extension Double : ℚ {}
-extension Float : ℚ {}
-
-
-
+extension Double : Rational {}
+extension Float : Rational {}
+public typealias ℚ = Float
 
 public func **(base:Int, exp:Int) -> Int{
 	var result = 1;
@@ -114,7 +112,7 @@ public func **(base:Int, exp:Int) -> Int{
 
 // Abstraction of a mathematical vector
 protocol VectorType {
-	typealias Scalar : ℚ
+	typealias Scalar : Rational
 	//func dotProduct(Self) -> Scalar
 	
 	// Parts not essential for answering the question
@@ -132,7 +130,7 @@ protocol VectorType {
 }
 
 
-struct EmptyVector<T: ℚ> : VectorType {
+struct EmptyVector<T: Rational> : VectorType {
 	init() {}
 	typealias Scalar = T
 	
@@ -191,10 +189,10 @@ func ⋅<T>(lhs:EmptyVector<T>, rhs:EmptyVector<T>) -> EmptyVector<T>.Scalar{
 
 
 
-func ⋮ <T: ℚ> (lhs: T, rhs: T) -> Vector<Vector<EmptyVector<T> > > {
+func ⋮ <T: Rational> (lhs: T, rhs: T) -> Vector<Vector<EmptyVector<T> > > {
 	return Vector(lhs, tail: Vector(rhs))
 }
-func ⋮ <T: ℚ, U where U.Scalar == T> (lhs: T, rhs: Vector<U>) -> Vector<Vector<U> > {
+func ⋮ <T: Rational, U where U.Scalar == T> (lhs: T, rhs: Vector<U>) -> Vector<Vector<U> > {
 	return Vector(lhs, tail: rhs)
 }
 
@@ -364,18 +362,23 @@ extension Int{
 		return NSString(format:"%2X", self) as String
 	}
 	
-	public func choose(k:Int, var busWidth: UInt? = nil) -> Int{
-		//let busWidth = k
+	public func choose(k:Int, busWidth: UInt? = nil) -> Int{
+		var _busWidth = busWidth
 		var ret: Int = 1
-		if let _ = busWidth{
+		if let _ = _busWidth{
 		} else {
-			busWidth = UInt(k)
+			_busWidth = UInt(k)
 		}
 		for i in self.stride(to: self - k , by: -1){
 			ret *= i
-			ret /= ((self - i) % Int(busWidth!)) + 1
+			ret /= ((self - i) % Int(_busWidth!)) + 1
 		}
 		return ret
+	}
+	
+	public subscript(index:Int) -> Bool{
+		let mask = 1 << index
+		return (self & mask) > 0
 	}
 }
 

@@ -29,8 +29,8 @@ struct OrderedSet<Tk: Hashable, Tv> {
 			if newValue != nil {
 				self.values[key] = newValue
 			} else {
-				self.values.removeValueForKey(key)
-				self.keys.removeAtIndex(index)
+				self.values.removeValue(forKey:key)
+				self.keys.remove(at: index)
 			}
 		}
 	}
@@ -41,7 +41,7 @@ struct OrderedSet<Tk: Hashable, Tv> {
 		}
 		set(newValue) {
 			if newValue == nil {
-				self.values.removeValueForKey(key)
+				self.values.removeValue(forKey:key)
 				self.keys = self.keys.filter {$0 != key}
 			}
 			

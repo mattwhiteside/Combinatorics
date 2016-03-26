@@ -8,10 +8,10 @@
 
 import Foundation
 
-public struct OrderedDictionary<Tk: Hashable, Tv> : SequenceType {
+public struct OrderedDictionary<Tk: Hashable, Tv> : Sequence {
 	var keys: Array<Tk>
 	var values: Dictionary<Tk,Tv>
-	
+  
 	public init(){
 		keys = Array<Tk>()
 		values = Dictionary<Tk,Tv>()
@@ -25,16 +25,17 @@ public struct OrderedDictionary<Tk: Hashable, Tv> : SequenceType {
 			
 		}
 	}
+  
+  public func makeIterator() -> OrderedDictionaryIterator<Tk,Tv> {
+    return OrderedDictionaryIterator(self)
+  }
 	
-	public func generate() -> OrderedDictionaryGenerator<Tk, Tv>{
-		return OrderedDictionaryGenerator(self)
-	}
 	
   
 }
 
 
-public class OrderedDictionaryGenerator<Tk:Hashable, Tv> : GeneratorType{
+public class OrderedDictionaryIterator<Tk:Hashable, Tv> : IteratorProtocol{
 	var current:Int = 0
 	let dict:OrderedDictionary<Tk,Tv>
 	init(_ dict:OrderedDictionary<Tk,Tv>){

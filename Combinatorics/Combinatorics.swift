@@ -1,9 +1,9 @@
-// Playground - noun: a place where people can play
+//Miscellaneous combinatorial math library
 
 import Foundation
 
 
-protocol GenericIntegerType: IntegerType {
+protocol GenericIntegerType: Integer {
 	init(_ v: Int)
 	init(_ v: UInt)
 	init(_ v: Int8)
@@ -21,7 +21,7 @@ protocol GenericIntegerType: IntegerType {
 
 protocol Group{
 	
-	typealias T = () -> Self
+	associatedtype T = () -> Self
 	
 }
 
@@ -112,7 +112,7 @@ public func **(base:Int, exp:Int) -> Int{
 
 // Abstraction of a mathematical vector
 protocol VectorType {
-	typealias Scalar : Rational
+	associatedtype Scalar : Rational
 	//func dotProduct(Self) -> Scalar
 	
 	// Parts not essential for answering the question
@@ -157,8 +157,6 @@ struct Vector<Tail: VectorType> : VectorType {
 		self.tail = Tail()
 	}
 	
-	
-	
 	var count: Int { return tail.count + 1 }
 	var scalar: Scalar
 	var tail: Tail
@@ -170,6 +168,11 @@ struct Vector<Tail: VectorType> : VectorType {
 }
 
 
+struct EmptyMatrix<T:Rational>{
+	
+}
+//This vector math stuff is originally from a swift forum post by D. Abrahams
+// and modified by me
 //===--- A nice operator for composing vectors ----------------------------===//
 //===--- there's probably a more appropriate symbol -----------------------===//
 infix operator ⋮ {
@@ -221,8 +224,6 @@ prefix func - <T> (_: EmptyVector<T>) -> EmptyVector<T> {
 	return EmptyVector()
 }
 
-
-
 func + <T> (lhs: Vector<T>, rhs: Vector<T>) -> Vector<T> {
 	return Vector(lhs[0] + rhs[0], tail: lhs.tail + rhs.tail)
 }
@@ -268,7 +269,7 @@ func / <T> (lhs: Vector<T>, rhs: T.Scalar) -> Vector<T> {
 
 
 //===--- CollectionType conformance ---------------------------------------===//
-extension Vector : CollectionType {
+extension Vector : Collection {
 	var startIndex: Int { return 0 }
 	var endIndex: Int { return count }
 }
@@ -314,6 +315,9 @@ func chooseOld(objectCounts:[UInt], k: UInt, busWidth: UInt) -> UInt{
 
 //this will be slow
 
+extension Sequence{
+	
+}
 
 extension Bool{
 	public func toInt() -> Int{
@@ -348,11 +352,11 @@ extension Int{
 		var counter = self
 		while counter > 0{
 			let digit = counter % 2
-			ret.insert(digit == 1, atIndex: 0)
+			ret.insert(digit == 1, at: 0)
 			counter /= 2
 		}
 		while ret.count < targetLength{
-			ret.insert(false, atIndex: 0)
+			ret.insert(false, at: 0)
 		}
 		return ret
 	}
@@ -369,10 +373,14 @@ extension Int{
 		} else {
 			_busWidth = UInt(k)
 		}
-		for i in self.stride(to: self - k , by: -1){
+    fatalError("needs implementation")
+    /*
+    not sure how stride is supposed to work in swift 3.0
+    for i:Int in stride(from: self, to: self - k , by: -1){
 			ret *= i
 			ret /= ((self - i) % Int(_busWidth!)) + 1
 		}
+    */
 		return ret
 	}
 	
@@ -418,8 +426,71 @@ extension UInt8{
 	}
 }
 
+//let dim = 3
+//
+//class Tensor{
+//	let dims:(Int, Int)
+//	let values:[ℚ]
+//	init(dims:(Int,Int),values:[ℚ]){
+//		assert(values.count == ((rank.0 + rank.1) ** dim))
+//		self.rank = rank
+//		self.values = values
+//	}
+//	
+//	subscript(indices: Int...) -> {
+//	
+//	}
+//}
 
+func modularMultiply(lhs:Int, rhs:Int) -> Int {
+	let ab = lhs * rhs;
+	
+	if ab == 0 {
+		
+		if lhs == 0 {
+			return ( 1 - lhs ) & 0xffff;
+		} else {
+			return ( 1 - rhs ) & 0xffff;
+		}		
+		
+	} else {
+		let lo = ab & 0xffff;
+		let hi = 2//ab >>> 16;
+		return ( ( lo - hi ) + ( lo < hi ? 1 : 0 ) ) & 0xffff;
+	}
+}
 
+//func IDEA(input:[UInt16]) -> [UInt16]{
+//	int x1, x2, x3, x4, k, t1, t2;
+//	var _input = input
+//	x1 = inShorts[0];
+//	x2 = inShorts[1];
+//	x3 = inShorts[2];
+//	x4 = inShorts[3];
+//	k = 0;
+//	for ( int round = 0; round < 8; ++round )
+//	{
+//		_input[0] = mul( x1 & 0xffff, keys[k++] );
+//		x2 = x2 + keys[k++];
+//		x3 = x3 + keys[k++];
+//		x4 = mul( x4 & 0xffff, keys[k++] );
+//		t2 = x1 ^ x3;
+//		t2 = mul( t2 & 0xffff, keys[k++] );
+//		t1 = t2 + ( x2 ^ x4 );
+//		t1 = mul( t1 & 0xffff, keys[k++] );
+//		t2 = t1 + t2;
+//		x1 ^= t1;
+//		x4 ^= t2;
+//		t2 ^= x2;
+//		x2 = x3 ^ t1;
+//		x3 = t2;
+//	}
+//	outShorts[0] = mul( x1 & 0xffff, keys[k++] ) & 0xffff;
+//	outShorts[1] = ( x3 + keys[k++] ) & 0xffff;
+//	outShorts[2] = ( x2 + keys[k++] ) & 0xffff;
+//	outShorts[3] = mul( x4 & 0xffff, keys[k++] ) & 0xffff;
+//	return [5]
+//}
 
 
 	
